@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     agendamentos: [],
-    agendamento: {}
+    send: null,
+
 }
 
 function agendamento(state = INITIAL_STATE, action) {
