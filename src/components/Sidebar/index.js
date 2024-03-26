@@ -1,7 +1,7 @@
 import { mdiCalendarBlankOutline, mdiAccountMultiple } from '@mdi/js';
 import { Link, useLocation } from 'react-router-dom';
 
-import logo from "../../assets/Logo.svg.png";
+import logo from "../../assets/Logo.png";
 
 const Sidebar = () => {
     const location = useLocation();
