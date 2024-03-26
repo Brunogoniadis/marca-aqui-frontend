@@ -2,12 +2,26 @@
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import moment from 'moment'
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react'
 
 const localizer = momentLocalizer(moment)
 
 const currentDate = moment().startOf('day');
 
 const Agendamentos = () => {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch({
+            type: '@agendamento/FILTER',
+            start: moment().weekday(0).format('YYYY-MM-DD'),
+            end: moment().weekday(6).format('YYYY-MM-DD'),
+
+        })
+    }, [])
+
     return (
         <div className="col p-5 overflow-auto h-100">
             <div className="row">
@@ -23,37 +37,7 @@ const Agendamentos = () => {
                                 title: "Corte Simples",
                                 start: currentDate.toDate(),
                                 end: moment(currentDate).add(30, 'minutes').toDate()
-                            },
-                            {
-                                title: "Corte Máquina",
-                                start: moment(currentDate).add(1, 'hour').toDate(),
-                                end: moment(currentDate).add(1, 'hour').add(30, 'minutes').toDate()
-                            },
-                            {
-                                title: "Corte",
-                                start: moment(currentDate).add(1, 'day').startOf('day').hour(12).toDate(),
-                                end: moment(currentDate).add(1, 'day').startOf('day').hour(13).toDate()
-                            },
-                            {
-                                title: "Corte",
-                                start: moment(currentDate).add(1, 'day').startOf('day').hour(14).toDate(),
-                                end: moment(currentDate).add(1, 'day').startOf('day').hour(15).toDate()
-                            },
-                            {
-                                title: "Corte",
-                                start: moment(currentDate).add(2, 'day').startOf('day').hour(10).toDate(),
-                                end: moment(currentDate).add(2, 'day').startOf('day').hour(11).toDate()
-                            },
-                            {
-                                title: "Corte",
-                                start: moment(currentDate).add(2, 'day').startOf('day').hour(16).toDate(),
-                                end: moment(currentDate).add(2, 'day').startOf('day').hour(17).toDate()
-                            },
-                            {
-                                title: "Corte",
-                                start: moment(currentDate).add(3, 'day').startOf('day').hour(13).toDate(),
-                                end: moment(currentDate).add(3, 'day').startOf('day').hour(14).toDate()
-                            },
+                            }
                         ]}
                         defaultView="week"
                         selectable
