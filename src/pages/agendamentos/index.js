@@ -2,24 +2,27 @@
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import moment from 'moment'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react'
-
+import { filterAgendamentos } from '../../store/modules/agendamento/actions';
 const localizer = momentLocalizer(moment)
 
 const currentDate = moment().startOf('day');
 
+
 const Agendamentos = () => {
 
     const dispatch = useDispatch()
+    const { agendamentos } = useSelector((state) => state.agendamento)
+
+    console.log('agendamentos', agendamentos)
 
     useEffect(() => {
-        dispatch({
-            type: '@agendamento/FILTER',
-            start: moment().weekday(0).format('YYYY-MM-DD'),
-            end: moment().weekday(6).format('YYYY-MM-DD'),
-
-        })
+        dispatch(
+            filterAgendamentos(moment().weekday(0).format('2023-01-01'),
+                moment().weekday(6).format('2024-04-30')
+            )
+        )
     }, [])
 
     return (
