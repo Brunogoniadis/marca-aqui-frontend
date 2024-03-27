@@ -19,7 +19,7 @@ export function* filterAgendamento({ start, end }) {
             alert(res.message)
             return false
         }
-        yield put(updateAgendamento(res))
+        yield put(updateAgendamento(res.message))
 
         console.log('res', res);
     } catch (err) {
