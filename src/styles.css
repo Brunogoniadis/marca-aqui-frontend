@@ -88,3 +88,24 @@ sidebar ul li a.active svg {
 sidebar ul li a text {
   font-size: 14px;
 }
+
+.table-responsive {
+  max-height: 70vh; 
+  overflow-y: auto; 
+}
+.table-responsive::-webkit-scrollbar {
+  width: 12px; 
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
