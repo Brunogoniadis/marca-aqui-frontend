@@ -8,10 +8,10 @@ const INITIAL_STATE = {
 };
 
 function agendamento(state = INITIAL_STATE, action) {
-    console.log("DATA", state)
     switch (action.type) {
         case types.FILTER_AGENDAMENTOS: {
             return produce(state, (draft) => {
+
                 draft.send = { ...action };
             });
         }

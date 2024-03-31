@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import TableComponent from '../../components/Table';
 
+import { UseDispatch, useDispatch, useSelector } from 'react-redux';
+import { allClientes } from '../../store/modules/cliente/actions';
+
 const Clientes = () => {
+
+    const dispatch = useDispatch();
+    const clientesFromRedux = useSelector(state => state.cliente.clientes);
+    const [clientesLocal, setClientesLocal] = useState([]);
+
+    useEffect(() => {
+
+        dispatch(allClientes());
+    }, [dispatch]);
+
+    useEffect(() => {
+
+        setClientesLocal(clientesFromRedux);
+    }, [clientesFromRedux]);
+
+
+    useEffect(() => {
+        console.log('clientesLocal', clientesLocal)
+
+    }, [clientesLocal])
 
     const data = [
         { id: 1, name: 'Cliente 1', email: 'cliente1@example.com' },
@@ -40,7 +63,7 @@ const Clientes = () => {
         { id: 33, name: 'Cliente 33', email: 'cliente33@example.com' },
         { id: 34, name: 'Cliente 34', email: 'cliente34@example.com' },
         { id: 35, name: 'Cliente 35', email: 'cliente35@example.com' },
-        // Adicione mais dados conforme necessário
+
     ];
 
 
@@ -66,7 +89,6 @@ const Clientes = () => {
 
                         ]}
                         actions={(rowData) => {
-                            console.log('teste', rowData.name); // Adicionando console.log para visualizar os dados de rowData
                             return (
                                 <button className="btn btn-primary btn-xs">Ver informações</button>
                             );

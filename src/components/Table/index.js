@@ -1,6 +1,4 @@
 const TableComponent = ({ data, config, actions, onRowClick }) => {
-    console.log('data', data);
-    console.log('config', config); // Log the received config for verification
 
     return (
         <div className="table-responsive max-height-500">

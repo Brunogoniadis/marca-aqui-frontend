@@ -7,15 +7,12 @@ import { useEffect } from 'react'
 import { filterAgendamentos } from '../../store/modules/agendamento/actions';
 import util from '../../util';
 const localizer = momentLocalizer(moment)
-const currentDate = moment().startOf('day');
 
 
 const Agendamentos = () => {
 
     const dispatch = useDispatch()
     const { agendamentos } = useSelector((state) => state.agendamento)
-
-    console.log('agendamentos', agendamentos)
 
 
     const formatRange = (periodo) => {
@@ -69,8 +66,7 @@ const Agendamentos = () => {
                         events={formatEventos}
                         onRangeChange={(periodo) => {
                             const { start, end } = formatRange(periodo)
-                            console.log("start", start)
-                            console.log("end", end)
+
                             dispatch(
                                 filterAgendamentos(start, end)
                             )

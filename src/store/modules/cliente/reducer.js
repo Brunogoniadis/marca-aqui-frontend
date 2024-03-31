@@ -7,17 +7,20 @@ const INITIAL_STATE = {
     clientes: []
 }
 
-function cliente(state = INITIAL_STATE, action) {
-    switch (action.types) {
-        case types.UPDATE_CLIENTES: {
-            return produce(state, draft => {
-                
-                draft={...draft, ...action.payload}
-            })
 
+function cliente(state = INITIAL_STATE, action) {
+
+    switch (action.type) {
+        case types.UPDATE_CLIENTE: {
+            return produce(state, (draft) => {
+                draft = { ...draft, ...action.payload };
+                return draft;
+            });
         }
-        default: return state
+
+        default:
+            return state;
     }
 }
 
-export default cliente
+export default cliente;
