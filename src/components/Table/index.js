@@ -1,6 +1,8 @@
 // React Component
 const TableComponent = ({ data, config, actions, onRowClick }) => {
 
+
+
     return (
         <div className="table-responsive max-height-500">
             <div className="table-wrapper">
